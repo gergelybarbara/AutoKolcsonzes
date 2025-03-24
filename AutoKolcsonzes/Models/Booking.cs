@@ -17,7 +17,7 @@ namespace AutoKolcsonzes.Models
 
         public Booking(string sor)
         {
-            var t= sor.Split(";");
+            var t= sor.Split(",");
 
             Id = Convert.ToInt32(t[0]);
             StartDate = Convert.ToDateTime(t[1]);

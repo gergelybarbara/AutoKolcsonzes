@@ -17,7 +17,7 @@ namespace AutoKolcsonzes.Models
 
         public Car(string sor)
         {
-            var t = sor.Split(";");
+            var t = sor.Split(",");
             Id = Convert.ToInt32(t[0]);
             Brand = t[1];
             Model = t[2];
