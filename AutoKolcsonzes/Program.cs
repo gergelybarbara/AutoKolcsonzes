@@ -31,3 +31,19 @@ foreach (var s in bookings)
     Console.WriteLine($"{car.Brand} \t{car.Model}, \t{s.StartDate:yyyy-MM-dd} - {s.EndDate:yyyy-MM-dd}");
 }
 
+var mostBooked = bookings
+    .GroupBy(x => x.CarId)
+    .OrderByDescending(x => x.Count())
+    .First();
+
+var mostBookedCar = cars.First(x=>x.Id==mostBooked.Key);
+
+Console.WriteLine($"\nA legtöbbet foglalt autó: {mostBookedCar}");
+
+var legtobbBevetel = bookings
+    .GroupBy(x => x.CarId)
+    .OrderByDescending(x => x.Sum(c=>c.TotalPrice))
+    .First();
+
+var topCar = cars.First(x => x.Id == legtobbBevetel.Key);
+Console.WriteLine($"\nA legtöbb bevételt hozű autó: {topCar}");
